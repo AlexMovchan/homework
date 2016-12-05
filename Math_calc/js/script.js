@@ -4,13 +4,14 @@ var op = {
     plus: function(a,b){return(a+b)},
     minus: function(a,b){return(a-b)},
     inc: function(a){return(++a)},
-    dec: function(a){return(--a)}
+    dec: function(a){return(--a)},
+    multipl: function(a,b){return(a*b)},
+    devision:function(a,b){return(a/b)},
+    square: function(a){return(a*a)},
+    root: function(a){return(Math.sqrt(a))}
 };
-    
-var f = op['dec'];
-    console.log(f(5));
-    (function m(operation, first, second){
-        return op[operation](first, second);})('plus', 2,3);
 
+    document.write(op.root(9));
+    
 }
     
