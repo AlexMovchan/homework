@@ -1,4 +1,4 @@
-window.onload= function() {
+
     
     function Notebook(icon, mark, model, RAM, CPU){
         this.icon = icon;
@@ -19,6 +19,12 @@ window.onload= function() {
  
     Notebook.prototype.touckpadOff = function(){
         this.touchpad = false;
+    }
+    
+     Notebook.prototype.toString = function(){
+        for(p in Notebook){
+            document.write(p + '<br>')
+        }
     }
     
     
@@ -212,8 +218,15 @@ window.onload= function() {
 
     }
     
+
+    showNotebook();
+
+    setTimeout(function() { 
+    document.getElementById('consult').style.display = 'table';
+    document.getElementById('bgcolor').style.display = 'block';
+    }, 2000);
+
     Acer.touckpadOff();
-   showNotebook();
     
     
     
@@ -221,4 +234,3 @@ window.onload= function() {
     
     
     
-}
