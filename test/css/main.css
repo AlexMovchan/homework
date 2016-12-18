@@ -1,0 +1,21 @@
+#black {
+    background-color: black;
+}
+
+#white {
+    background-color: white;
+}
+
+body {
+    background-color: aqua;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+
+img {
+    margin:25px;
+}
