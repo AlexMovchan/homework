@@ -220,11 +220,15 @@
     
 
     showNotebook();
+
     Acer.touckpadOff();
 
     setTimeout(function() { 
-        document.getElementById('consult').innerHTML = '<div style="width:400px; height:400px; background-color:cyan; top: 200px; left: 50%; margin-left: -200px; display: table; text-align: center; vertical-align: middle; position: fixed;"><p style="display:table-cell; vertical-align: middle; font-size: 35px;">Can I help You?<button style="width: 200px; height: 40px;">Ok</button></p></div>';
-        document.getElementById('bgcolor').innerHTML = '<div style="width:inherit; height:inherit; background-color:black; opacity: 0.7;">Can I help You?</div>';
+        document.getElementById('consult').innerHTML = '<div style="width:400px; height:400px; background-color:#d1d4d4; top: 200px;\
+            left: 50%; margin-left: -200px; display: table; text-align: center; vertical-align: middle; position: fixed;">\
+            <p style="display:table-cell; vertical-align: middle; font-size: 35px;">Can I help You?<button style="width: 200px; height: 40px;">Ok</button></p></div>';
+        document.getElementById('bgcolor').innerHTML = '<div style="width:inherit; height:inherit; background-color:black; opacity: 0.7;">\
+        Can I help You?</div>';
     }, 1000);
 
         
