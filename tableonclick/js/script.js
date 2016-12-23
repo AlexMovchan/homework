@@ -60,11 +60,12 @@ btn5.onclick = function(){
 
 
 
-
+var grad = 90;
 
 var btn = document.getElementById('btn');
 
 btn.onclick = function(){
     var picture = document.getElementById('picture');
-    picture.setAttribute('style', 'transform: rotate(90deg); transition: 2s;'); 
+    picture.setAttribute('style', 'transform: rotate(' + grad + 'deg); transition: 2s;'); 
+    grad += 90;
 }
