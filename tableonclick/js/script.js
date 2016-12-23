@@ -1,8 +1,10 @@
+var btn0 = document.getElementById('btn0');
 var btn1 = document.getElementById('btn1');
 var btn2 = document.getElementById('btn2');
 var btn3 = document.getElementById('btn3');
 var btn4 = document.getElementById('btn4');
 var btn5 = document.getElementById('btn5');
+var btn6 = document.getElementById('btn6');
 
 function reset(){
     var tableData = document.getElementsByTagName('td');
@@ -11,6 +13,12 @@ function reset(){
     }
 }
 
+btn0.onclick = function(){
+    var tableData = document.getElementsByTagName('td');
+    for(var i = 0; i< tableData.length; i++){
+        tableData[i].style.backgroundColor = 'red';
+    }
+}
 
 btn1.onclick = function(){
     reset();
@@ -54,6 +62,10 @@ btn5.onclick = function(){
     if(parentData.nextSibling != null){
         parentData.nextSibling.style.backgroundColor = 'red';   
     }
+}
+
+btn6.onclick = function(){
+    reset();
 }
 
 
