@@ -55,7 +55,7 @@ buttons[7].onclick = function(){
 }
 
 buttons[8].onclick = function(){
-        grad += 180;
-        var picture = document.getElementById('picture');
-        picture.setAttribute('style', 'transform: rotate(' + grad + 'deg); transition: 2s;'); 
+    grad += 180;
+    var picture = document.getElementById('picture');
+    picture.setAttribute('style', 'transform: rotate(' + grad + 'deg); transition: 2s;'); 
 }
