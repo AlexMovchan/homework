@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+    width: 100%;
+    background-color: black;
+}
+
+#circle {
+    margin: auto; 
+    background-color: white; 
+    border-radius: 50%; 
+    width:10px; 
+    height:10px;
+    transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+

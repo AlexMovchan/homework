@@ -1,0 +1,15 @@
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#circle {
+    width: 100px;
+    height: 100px;
+    transition: 1s;
+    border-radius: 50%;
+    background-color: aqua;
+}

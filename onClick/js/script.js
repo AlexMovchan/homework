@@ -41,8 +41,19 @@ btn3.onclick = function(){
 var btn4 = document.getElementById('btn4');
 
 btn4.onclick = function(){
-   if(document.checkbox1.checked == true){
-       alert('True');
-   }
     
+    var yourName = document.getElementsByName('name');
+    
+    var checkbox = document.getElementsByName('checkbox');
+
+    var res = '';
+    for(var i = 0; i< checkbox.length; i++){
+        if(checkbox[i].checked == true){
+            res+= checkbox[i].value + '-' + '' + checkbox[i].checked + '' + '\r\n'
+        }
+    }
+        alert("Your name " + yourName[0].value+ '\r\n'+ 'You choose this value:' + '\r\n' + res);
 }
+
+
+
