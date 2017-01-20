@@ -1,0 +1,40 @@
+/*div {
+    width: 98px;
+    border: 1px solid black;
+    display: none;
+}
+
+button {
+    display: block;
+    width: 100px;
+}*/
+
+
+
+bodu {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: table-cell;
+    height: 200px;
+    background-color: yellow;
+    border: 1px solid black;
+    vertical-align: middle;
+}
+
+span {
+    display: none;
+    border: 1px solid black;
+    opacity: 0;
+}
+div:hover {
+    cursor: pointer;
+}
+
+h1 {
+    writing-mode: tb-rl;
+    text-align: center;
+    font-size: 15px;
+}
