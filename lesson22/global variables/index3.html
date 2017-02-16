@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        
+    
+    <script>
+
+        // родительский конструктор
+        function car(doors) {
+            this.doors = doors || "4";
+            this.wheels = "4";
+        }
+
+        // дополнительное поведение добавленное в прототип.
+        car.prototype.beep = function () {
+            alert("Beeeeep, this is " + this.model);
+        }
+
+        // пустой дочерний конструктор.
+        function mark(model) { }
+
+        inherit(mark, car);
+
+        function inherit(C, P) {
+            var F = function () { }; // пустая функция, которая будет использоваться для задания прототипа дочернему объекту
+            F.prototype = P.prototype; // установка для прототипа новой функции прототипа родителя
+            C.prototype = new F();
+        }
+        
+        var merc = new mark();
+        merc.model = "Mercedes";
+        merc.beep();
+        
+        var nissan = new mark();
+        nissan.model = "Nissan";
+        nissan.beep();
+
+    </script>
+    
+    
+
+</body>
+</html>

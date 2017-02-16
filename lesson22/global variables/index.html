@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var App = App || {};
+        
+        App.define = function(namespace) {
+            var parts = namespace.split("."),
+                parent = App,
+                i;
+            
+            if (parts[0] == "App") {
+                parts = parts.slice(1);
+            }
+            
+            for (i = 0; i < parts.length; i++) {
+                if (typeof parent[parts[i]] == "undefined") {
+                    parent[parts[i]] = {};
+                }
+                parent = parent[parts[i]];
+            }
+            return parent;
+        };
+    </script>
+    
+    
+    <script>
+        (function() {
+            var module1 = App.define('App.utils.forms');
+            var module2 = App.define('App.utils.events');
+            console.dir(App);
+        }());
+    </script>
+    
+    <script src='main.js'></script>
+</body>
+</html>

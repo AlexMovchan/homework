@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var App = App || {};
+        
+        App.define = function(namespace) {
+            var parts = namespace.split("."),
+                parent = App,
+                i;
+            
+            if (parts[0] == "App") {
+                parts = parts.slice(1);
+            }
+            
+            for (i = 0; i < parts.length; i++) {
+                if (typeof parent[parts[i]] == "undefined") {
+                    parent[parts[i]] = {};
+                }
+                parent = parent[parts[i]];
+            }
+            return parent;
+        };
+    </script>
+    
+    
+     <script>
+        // определяем пространство имен
+        App.define("util.calc");
+
+        // инициализируем объект используя немелденно вызываемую функцию.
+        App.util.calc = (function () {
+
+            // закрытые члены
+            var x, y;
+
+            function privateAdd() {
+                return x + y;
+            }
+            
+            function privateInc() {
+                return x - y;
+            }
+            
+            function privateDev() {
+                return x / y;
+            }
+
+            function privateSetX(val) {
+                x = val;
+            }
+
+            function privateSetY (val) {
+                y = val;
+            }
+
+            return {
+                // открытые доступа к определенным методам.
+                add: privateAdd,
+                inc: privateInc,
+                dev: privateDev,
+                setX: privateSetX,
+                setY: privateSetY
+            }
+        }());
+
+    </script>
+    
+     <script>
+        (function () {
+            var calc = App.util.calc;
+
+            calc.setX(+prompt('insert first number'));
+            calc.setY(+prompt('insert second number'));
+
+  
+            document.write(calc.add());
+        }());
+    </script>
+   
+   
+    <script src='main.js'></script>
+</body>
+</html>
