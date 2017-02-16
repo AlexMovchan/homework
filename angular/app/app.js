@@ -12,17 +12,17 @@ var model = {
         {name: 'f', ava: 'img/6.png'},
         {name: 'g', ava: 'img/7.png'},
         {name: 'h', ava: 'img/8.png'},
-        {name: 'i', ava: 'img/9.png'},
-        {name: 'j', ava: 'img/10.png'}
+        {name: 'i', ava: 'img/9.png'}
     ]
 }
 
 var app = angular.module("app", []);
+
 app.controller("appCtrl", function ($scope) {
     $scope.person = model;
 
-     $scope.tableView = "table.html";
-     $scope.listView = "list.html";
+    $scope.tableView = "table.html";
+    $scope.listView = "list.html";
 
     $scope.url = $scope.tableView;
 

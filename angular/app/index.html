@@ -5,71 +5,9 @@
     <link rel="stylesheet" href="libs/bootstrap.css">
     <link rel="stylesheet" href="libs/bootstrap-theme.css">
     <link rel="stylesheet" href="libs/font-awesome.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Two-way data-binding</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        .row {
-            margin: 0;
-        }
-        .image_container_sidebar{
-            max-width: 100%;
-            overflow: hidden;
-            margin: 10px auto;
-        }
-        .image_container {
-            max-width: 33%;
-            overflow: hidden;
-            margin: 10px auto;
-        }
-        .image_container_big{
-            max-width: 700px;
-            overflow: hidden;
-            margin: 10px auto;
-        }
-        .flex_conteiner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-flow: row wrap;
-        }
-
-        sidebar {
-            background-color: cyan;
-            height: 100vh;
-        }
-        ul {
-            margin: 50px 0;
-            text-align: center;
-            padding: 0;
-        }
-        li{
-            list-style: none;
-        }
-        .container {
-            margin: 50px 0;
-        }
-        .button_container {
-            text-align: center;
-        }
-        .sidebar_fixed {
-            position: fixed;
-            width: inherit;
-            left: 0;
-            height: 100vh;
-            background-color: cyan;
-        }
-        .img_content {
-            margin: 50px 0;
-        }
-        i:hover{
-            color: blue;
-        }
-    </style>
-     <script src="app.js"></script>
+    <script src="app.js"></script>
 
 </head>
 
@@ -79,9 +17,9 @@
         <sidebar class='col-lg-3 col-md-3 col-sm-3 col-xs-3'>
             <div class="sidebar_fixed">
                 <ul ng-model='person'>
-                    <li>name : {{person.name}}</li>
-                    <li>surname : {{person.surname}}</li>
-                    <li>age : {{person.age}}</li>
+                    <li>Name : {{person.name}}</li>
+                    <li>Surname : {{person.surname}}</li>
+                    <li>Age : {{person.age}}</li>
                     <li><div class='image_container_sidebar'><img src="{{person.ava}}" width='100%'></div></li>
                 </ul>
             
