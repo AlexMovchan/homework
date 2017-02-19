@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+    <title>Adding new elements</title>
+
+   <script src="libs/angular.js"></script>
+    <link href="libs/bootstrap-theme.css" rel="stylesheet" />
+    <link href="libs/bootstrap.css" rel="stylesheet" />
+
+    <script>
+        angular.module("sampleApp", [])
+        .controller("defaultCtrl", function ($scope) {
+            $scope.tasks = [
+                { action: "Task 1", complete: false, priority: "Normal" },
+                { action: "Task 2", complete: true, priority: "Normal" },
+                { action: "Task 3", complete: false, priority: "Normal" },
+                { action: "Task 4", complete: true, priority: "Normal" }
+            ];
+
+            $scope.editTask = false;
+            $scope.formInput = true;
+            $scope.formPriority = true;
+            $scope.editPriority = false;
+
+            $scope.showTaskEditor = function() {
+            	$scope.editTask = true;
+            	$scope.formInput = false;
+            }
+            $scope.showFormInput = function(){
+            	$scope.formInput = true;
+            	$scope.editTask = false;
+            }
+
+            $scope.showPriorityEditor = function(){
+            	$scope.formPriority = false;
+            	$scope.editPriority = true;
+            }
+
+            $scope.showFormInputPriority = function(){
+            	$scope.formPriority = true;
+            	$scope.editPriority = false;
+            }
+
+
+            $scope.setStyle = function (status) {
+                return status ? "background-color:green; color: white" : "background-color:red; color: white";
+            }
+
+            $scope.addTask = function (task) {
+                //angular.isDefined - функция, которая позволяет проверить наличие свойства объекта.
+                if (angular.isDefined(task) &&
+                    angular.isDefined(task.action) &&
+                    angular.isDefined(task.priority)) {
+                    $scope.tasks.push({
+                        action: task.action,
+                        priority: task.priority,
+                        complete: false
+                    });
+                }
+            }
+
+
+
+            $scope.person = 'person.html';
+            $scope.company = 'company.html';
+            $scope.url = 'person.html';
+           
+
+
+
+        });
+    </script>
+</head>
+<body style="padding:10px">
+    <div class="row" ng-controller="defaultCtrl">
+
+        <div class="col-md-4">
+            <div class="well">
+
+                <div class="form-group row">
+                    <label for="actionText">Action:</label>
+                    <input id="actionText" class="form-control" ng-model="task.action" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="actionPriority">Priority:</label>
+                    <select id="actionPriority" class="form-control" ng-model="task.priority">
+                        <option>High</option>
+                        <option>Normal</option>
+                        <option>Low</option>
+                    </select>
+                </div>
+                <!-- При введении значений в поля action и priority angular автоматически создает объект task и устанавливает для него свойства. -->
+                <button class="btn btn-primary btn-block" ng-click="addTask(task)">Add</button>
+            </div>
+        </div>
+
+        <div class="col-md-8 panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h3>
+                        Незавершенные задачи
+                        <span class="label label-danger">
+                            {{(tasks | filter : {complete : 'false'} ).length}}
+                        </span>
+                    </h3>
+                </div>
+            </div>
+
+            <table class="table">
+                <tbody>
+                    <tr ng-repeat="task in tasks" style="{{setStyle(task.complete)}}"> 
+                        <td>
+                        	<span ng-click='showTaskEditor()' ng-show='formInput'>{{task.action}}</span> 
+                        	<span ng-show='editTask'>
+                        		<input type="text" ng-model='task.action'> 
+                        		<button class='btn btn-success' ng-click='showFormInput()'>Save</button> 
+                        	</span ng-show='isActive'>
+                        </td>
+
+                        <td>
+                        	<span ng-click='showPriorityEditor()' ng-show='formPriority'>
+                        		{{task.priority}}
+                        	</span> 
+                        	<span ng-show='editPriority'>
+                        		<input type="text" ng-model='task.priority'>
+                        		<button class='btn btn-success' ng-click='showFormInputPriority()'>Save</button> 
+                        	</span>
+                        </td>
+                        <td>
+                        	<input type="checkbox" ng-model="task.complete" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+
+        <div class="col-md-12 panel-info">
+			<select name="selectForm" ng-model='url'>
+				<option value="person.html">Person</option>
+				<option value="company.html">Company</option>
+			</select>
+			<ng-include src="url"></ng-include>
+			<h1>{{url}}</h1>
+		</div>
+
+
+
+    </div>
+</body>
+</html>
