@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Adding new elements</title>
+
+   <script src="libs/angular.js"></script>
+    <link href="libs/bootstrap-theme.css" rel="stylesheet" />
+    <link href="libs/bootstrap.css" rel="stylesheet" />
+
+   
+    <script>
+
+        var personArr = [
+            {name : 'Alex', surname : 'Movchan', status : true},
+            {name : 'Petro', surname : 'Hello', status : false},
+            {name : 'John', surname : 'Hello', status : false},
+            {name : 'Ben', surname : 'Hello', status : false},
+            {name : 'Alfred', surname : 'Hello', status : false},
+            {name : 'Jim', surname : 'Hello', status : false},
+            {name : 'Dan', surname : 'Hello', status : false},
+            {name : 'Izi', surname : 'Hello', status : true},
+            {name : 'Ali', surname : 'Hello', status : false},
+            {name : 'Rich', surname : 'Hello', status : false},
+            {name : 'Alex', surname : 'Hello', status : false}
+        ];
+
+
+        angular.module('myApp', [])
+            .controller('personCtrl', function($scope){
+                $scope.person = personArr;
+
+                $scope.makeOn = function() {
+                    this.prop.status = true;
+                }
+
+                $scope.AllList = true;
+                $scope.OnlineList = false;
+
+                $scope.showAll = function() {
+                    $scope.AllList = true;
+                    $scope.OnlineList = false;
+                }
+                $scope.showOnline = function() {
+                    $scope.AllList = false;
+                    $scope.OnlineList = true;
+                }
+
+        })
+
+    </script>
+
+
+    <style>
+        .ava {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid black;
+            background-color: grey;
+            position: relative;
+            margin: auto;
+        }
+        .online {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #04d604;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .offline {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .buttonContainer{
+            height: 50px;
+            background-color: grey;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .navButton {
+            height: inherit;
+            width: 49%;
+            outline: none;
+        }
+
+        .navButton:focus {
+            background-color: grey;
+        }
+
+        .contentRepeator {
+            text-align: center;
+            width: 40%;
+        }
+
+        .contentBorder {
+            border: 1px solid black;
+            margin-left: 10px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            padding: 0; 
+
+        }
+
+    </style>
+</head>
+<body style="padding:10px">
+    <div class="row" ng-controller='personCtrl'>
+        <div class="col-md-4 col-sm-4 col-xs-4 contentBorder">
+            <div class="buttonContainer">
+                <button class='navButton' ng-click='showAll()'>Show All</button> 
+                <button class='navButton' ng-click='showOnline()'>Online</button>
+            </div>
+
+            <div ng-repeat="prop in person " ng-show='AllList' class='contentRepeator'>
+                <div class="ava"><div ng-class='prop.status ? "online" : "offline" '></div></div>
+                <span>{{prop.name}}</span>
+                <span>{{prop.surname}}</span>
+                <br>
+                <button ng-click='makeOn()'>online</button>
+            </div>
+        
+
+            <div ng-repeat="prop in person | filter: {status : true}" ng-show='OnlineList' class='contentRepeator'>
+                <div class="ava"><div ng-class='prop.status ? "online" : "offline" '></div></div>
+                <span>{{prop.name}}</span>
+                <span>{{prop.surname}}</span>
+                <br>
+                <button ng-click='makeOn()'>online</button>
+            </div>
+        </div>    
+    </div>
+
+</body>
+</html>
